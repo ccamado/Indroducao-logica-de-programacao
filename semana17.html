@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Semana 17 — Lista/Fila/Pilha</title>
+  <style>:root{--bg:#0b1020;--card:#111a33;--muted:#9fb0ff;--text:#eef2ff;--accent:#7c3aed;--accent2:#22c55e;--border:rgba(255,255,255,.12);}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Arial,sans-serif;color:var(--text);
+background:radial-gradient(1200px 600px at 15% 0%, rgba(124,58,237,.35), transparent 55%),
+radial-gradient(900px 600px at 85% 15%, rgba(34,197,94,.22), transparent 55%),var(--bg);}
+a{color:inherit;text-decoration:none}
+.container{max-width:1100px;margin:0 auto;padding:24px}
+header{display:flex;gap:16px;align-items:center;justify-content:space-between;padding:18px;border:1px solid var(--border);border-radius:18px;
+background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));backdrop-filter:blur(6px);}
+.brand{display:flex;gap:12px;align-items:center}
+.logo{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg, rgba(124,58,237,.9), rgba(34,197,94,.7));border:1px solid rgba(255,255,255,.18);}
+h1{font-size:18px;margin:0}
+.subtitle{margin:2px 0 0;font-size:12px;color:rgba(238,242,255,.75)}
+.badges{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.badge{font-size:12px;padding:6px 10px;border-radius:999px;border:1px solid var(--border);background:rgba(255,255,255,.05);color:rgba(238,242,255,.85)}
+nav{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap}
+.navbtn{padding:10px 12px;border-radius:12px;border:1px solid var(--border);background:rgba(255,255,255,.04);font-size:13px}
+.navbtn:hover{background:rgba(255,255,255,.07)}
+.grid{margin-top:18px;display:grid;gap:14px;grid-template-columns:repeat(12,1fr)}
+.card{grid-column:span 12;border:1px solid var(--border);border-radius:18px;background:rgba(17,26,51,.72);box-shadow:0 20px 60px rgba(0,0,0,.35);overflow:hidden}
+.hd{padding:16px 16px 10px;display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.hd h2{margin:0;font-size:16px}
+.hd p{margin:6px 0 0;color:rgba(238,242,255,.72);font-size:13px;line-height:1.35}
+.bd{padding:0 16px 16px}
+.cols{display:grid;gap:14px;grid-template-columns:repeat(12,1fr)}
+.col6{grid-column:span 12}
+@media(min-width:920px){.col6{grid-column:span 6}}
+.section-title{margin:0 0 8px;font-size:13px;letter-spacing:.3px;color:rgba(238,242,255,.85);text-transform:uppercase}
+.box{border:1px dashed rgba(255,255,255,.18);border-radius:16px;padding:14px;background:rgba(0,0,0,.16)}
+pre{margin:0;padding:12px;border-radius:14px;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.14);overflow:auto;font-size:13px;line-height:1.4}
+ul{margin:10px 0 0 18px}li{margin:6px 0;color:rgba(238,242,255,.85)}
+hr.sep{border:0;height:1px;background:rgba(255,255,255,.12);margin:14px 0}
+.callout{border-left:4px solid rgba(124,58,237,.9);padding:10px 12px;border-radius:12px;background:rgba(124,58,237,.10);color:rgba(238,242,255,.9);font-size:13px}
+.illus{width:100%;height:170px;border-radius:16px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.18);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.illus svg{width:100%;height:100%}
+/* Quiz */
+.quiz{border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:14px;background:rgba(8,18,52,.55)}
+.quiz-top{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+.progress{width:220px;max-width:100%;height:10px;border-radius:999px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.12);overflow:hidden}
+.progress>div{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+.q{margin-top:12px;font-size:14px;color:rgba(255,255,255,.96)}
+.opts{display:grid;gap:8px;margin-top:10px}
+.opt{padding:10px 12px;border-radius:14px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.05);cursor:pointer;font-size:13px;text-align:left;color:rgba(255,255,255,.96)}
+.opt:hover{background:rgba(255,255,255,.08)}
+.opt.correct{border-color:rgba(34,197,94,.7);background:rgba(34,197,94,.16)}
+.opt.wrong{border-color:rgba(239,68,68,.7);background:rgba(239,68,68,.16)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.btn{padding:10px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.08);cursor:pointer;font-size:13px;color:rgba(255,255,255,.96)}
+.btn.primary{background:rgba(124,58,237,.22);border-color:rgba(124,58,237,.5)}
+.btn.success{background:rgba(34,197,94,.18);border-color:rgba(34,197,94,.5)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.small{font-size:12px;color:rgba(238,242,255,.7)}
+.footer{margin:18px 0 0;color:rgba(238,242,255,.65);font-size:12px;text-align:center}
+</style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1>Introdução à Lógica de Programação — 3ºA</h1>
+          <div class="subtitle">11/06/2026 • Lista, Fila e Pilha</div>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge">2º bimestre (2026)</span>
+        <span class="badge">Quinta • 50 min</span>
+        <span class="badge">Professor: Cláudio Amado</span>
+      </div>
+    </header>
+
+    <nav aria-label="Menu">
+<a class="navbtn" href="index.html">🏠 Início</a>
+<a class="navbtn" href="semana13.html">📘 07/05 — Funções (revisão)</a>
+<a class="navbtn" href="semana14.html">📗 14/05 — Retorno & Reuso (revisão)</a>
+<a class="navbtn" href="semana15.html">📙 21/05 — Vetor (revisão)</a>
+<a class="navbtn" href="semana16.html">⭐ 28/05 — Matriz (aula)</a>
+<a class="navbtn" href="semana17.html">📘 11/06 — Lista/Fila/Pilha</a>
+<a class="navbtn" href="semana18.html">📗 18/06 — Árvore</a>
+<a class="navbtn" href="semana19.html">📝 25/06 — Avaliação (roteiro)</a>
+<a class="navbtn" href="semana20.html">⚡ 02/07 — Desempenho & Big‑O</a>
+<a class="navbtn" href="semana21.html">🩹 09/07 — RAV (Recursão + Busca)</a>
+<a class="navbtn" href="semana22.html">🔁 16/07 — Ordenação</a>
+    </nav>
+
+    
+<div class="grid">
+  <section class="card">
+    <div class="hd">
+      <div>
+        <h2>📘 Semana 17 (11/06) — Lista, Fila e Pilha</h2>
+        <p>Diferenças e usos com exemplos do cotidiano (FIFO/LIFO).</p>
+      </div>
+      <div style="min-width:260px; max-width:360px;"><div class='illus' aria-hidden='true'><svg viewBox="0 0 900 300" xmlns="http://www.w3.org/2000/svg">
+<rect width="900" height="300" fill="rgba(0,0,0,.15)"/>
+<text x="60" y="70" fill="rgba(238,242,255,.9)" font-size="24" font-family="system-ui">Lista • Fila (FIFO) • Pilha (LIFO)</text>
+<g transform="translate(60,95)">
+  <rect x="0" y="0" width="260" height="170" rx="16" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.18)"/>
+  <text x="18" y="36" fill="rgba(238,242,255,.85)" font-size="16" font-family="system-ui">LISTA</text>
+  <rect x="18" y="55" width="60" height="50" rx="12" fill="rgba(124,58,237,.22)" stroke="rgba(255,255,255,.18)"/>
+  <rect x="88" y="55" width="60" height="50" rx="12" fill="rgba(124,58,237,.15)" stroke="rgba(255,255,255,.18)"/>
+  <rect x="158" y="55" width="60" height="50" rx="12" fill="rgba(124,58,237,.22)" stroke="rgba(255,255,255,.18)"/>
+  <text x="18" y="145" fill="rgba(238,242,255,.65)" font-size="13" font-family="system-ui">adiciona/remove em posições</text>
+</g>
+<g transform="translate(350,95)">
+  <rect x="0" y="0" width="250" height="170" rx="16" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.18)"/>
+  <text x="18" y="36" fill="rgba(238,242,255,.85)" font-size="16" font-family="system-ui">FILA (FIFO)</text>
+  <rect x="18" y="60" width="50" height="50" rx="12" fill="rgba(34,197,94,.18)" stroke="rgba(255,255,255,.18)"/>
+  <rect x="78" y="60" width="50" height="50" rx="12" fill="rgba(34,197,94,.12)" stroke="rgba(255,255,255,.18)"/>
+  <rect x="138" y="60" width="50" height="50" rx="12" fill="rgba(34,197,94,.18)" stroke="rgba(255,255,255,.18)"/>
+  <path d="M18 125 H188" stroke="rgba(238,242,255,.75)" stroke-width="3"/>
+  <text x="18" y="150" fill="rgba(238,242,255,.65)" font-size="13" font-family="system-ui">entra no fim • sai no começo</text>
+</g>
+<g transform="translate(630,95)">
+  <rect x="0" y="0" width="210" height="170" rx="16" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.18)"/>
+  <text x="18" y="36" fill="rgba(238,242,255,.85)" font-size="16" font-family="system-ui">PILHA (LIFO)</text>
+  <rect x="80" y="55" width="60" height="45" rx="12" fill="rgba(245,158,11,.18)" stroke="rgba(255,255,255,.18)"/>
+  <rect x="80" y="105" width="60" height="45" rx="12" fill="rgba(245,158,11,.12)" stroke="rgba(255,255,255,.18)"/>
+  <text x="18" y="165" fill="rgba(238,242,255,.65)" font-size="13" font-family="system-ui">entra e sai pelo topo</text>
+</g>
+</svg></div></div>
+    </div>
+    <div class="bd">
+      <div class="cols">
+        <div class="col6">
+          <div class='box'><div class='section-title'>Lista (ideia simples)</div><ul><li>Lista = coleção de itens em sequência.</li><li>Você consegue inserir e remover itens.</li><li>Ex.: lista de tarefas, lista de nomes.</li></ul><hr class='sep'><pre><code>lista &lt;- []
+// adicionar item (conceito)
+// remover item (conceito)</code></pre></div><div style='height:12px'></div><div class='box'><div class='section-title'>Fila (FIFO)</div><ul><li>Fila: o primeiro que entra é o primeiro que sai.</li><li>Ex.: fila da cantina.</li><li>Operações: ENFILEIRAR (entrar) e DESENFILEIRAR (sair).</li></ul><hr class='sep'><pre><code>FILA f
+ENFILEIRAR(f, "Ana")
+ENFILEIRAR(f, "Bruno")
+DESENFILEIRAR(f)  // sai Ana</code></pre></div><div style='height:12px'></div><div class='box'><div class='section-title'>Pilha (LIFO)</div><ul><li>Pilha: o último que entra é o primeiro que sai.</li><li>Ex.: pilha de pratos.</li><li>Operações: EMPILHAR (push) e DESEMPILHAR (pop).</li></ul><hr class='sep'><pre><code>PILHA p
+EMPILHAR(p, "A")
+EMPILHAR(p, "B")
+DESEMPILHAR(p) // sai B</code></pre></div>
+          <div style="height:12px"></div>
+          
+      <div class="box">
+        <div class="section-title">🧪 Prática no Portugol Web Studio (portugol.dev)</div>
+        <p style="margin:0;color:rgba(238,242,255,.82);font-size:13px;line-height:1.35">
+          Abra: <b><a href="https://portugol.dev/" target="_blank" rel="noopener noreferrer">https://portugol.dev/</a></b>
+        </p>
+        <hr class="sep">
+        <ul><li>Abra https://portugol.dev/ e crie um novo projeto.</li><li>Simule uma FILA com 3 nomes (apenas mostrando a ordem de saída).</li><li>Depois, simule uma PILHA com 3 letras (mostre qual sai primeiro).</li><li>No final, escreva no comentário qual é FIFO e qual é LIFO.</li></ul>
+      </div>
+    
+        </div>
+        <div class="col6">
+          <div class="box">
+            <div class="section-title">📝 Resumo para copiar no caderno</div>
+            <div class="callout">1) Lista = coleção em sequência (adiciona/remove).<br>2) Fila (FIFO) = primeiro entra, primeiro sai.<br>3) Pilha (LIFO) = último entra, primeiro sai.<br>4) Ex.: cantina (fila) e pratos (pilha).</div>
+            <hr class="sep">
+            <div class="small">Copie o resumo inteiro. Ele ajuda a acertar o quiz.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+    
+    <section class="card">
+      <div class="hd">
+        <div>
+          <h2>🎮 Quiz (10 questões) — treino rápido</h2>
+          <p>Faça no seu ritmo. Clique na alternativa. Você vê a correção na hora.</p>
+        </div>
+      </div>
+      <div class="bd">
+        <div id="quizS17" class="quiz">
+          <div class="quiz-top">
+            <div class="progress" aria-label="Progresso do quiz"><div></div></div>
+            <div class="small" data-meta></div>
+            <div class="small" data-score></div>
+          </div>
+          <div class="q" data-q></div>
+          <div class="opts" data-opts></div>
+          <div class="actions">
+            <button class="btn primary" type="button" data-next disabled>Próxima</button>
+            <button class="btn" type="button" data-reveal>Mostrar correta</button>
+            <button class="btn success" type="button" data-restart>Recomeçar</button>
+          </div>
+          <div class="small" style="margin-top:10px;">Dica: copie o resumo no caderno e tente novamente.</div>
+        </div>
+      </div>
+    </section>
+    
+
+    <div class="footer">© 2026 — Material de apoio. Simples, didático e direto.</div>
+  </div>
+
+  <script>function createQuiz(rootId, questions){
+  const root = document.getElementById(rootId);
+  if(!root) return;
+  let idx=0, score=0, locked=false;
+  const el={
+    bar: root.querySelector(".progress > div"),
+    meta: root.querySelector("[data-meta]"),
+    score: root.querySelector("[data-score]"),
+    q: root.querySelector("[data-q]"),
+    opts: root.querySelector("[data-opts]"),
+    next: root.querySelector("[data-next]"),
+    reveal: root.querySelector("[data-reveal]"),
+    restart: root.querySelector("[data-restart]"),
+  };
+
+  function render(){
+    const item = questions[idx];
+    el.q.textContent = item.q;
+    el.opts.innerHTML = "";
+    locked=false;
+    el.next.disabled=true;
+    el.reveal.disabled=false;
+
+    el.meta.textContent = `Questão ${idx+1} de ${questions.length}`;
+    el.score.textContent = `Pontuação: ${score}/${questions.length}`;
+    el.bar.style.width = Math.round((idx/questions.length)*100) + "%";
+
+    item.options.forEach((opt,i)=>{
+      const b=document.createElement("button");
+      b.type="button";
+      b.className="opt";
+      b.textContent = `${String.fromCharCode(65+i)}) ${opt}`;
+      b.addEventListener("click", ()=>choose(i));
+      el.opts.appendChild(b);
+    });
+  }
+
+  function mark(correctIdx, chosenIdx){
+    const btns=[...el.opts.querySelectorAll(".opt")];
+    btns.forEach((b,i)=>{ if(i===correctIdx) b.classList.add("correct"); });
+    if(chosenIdx!==null && chosenIdx!==correctIdx){
+      btns[chosenIdx].classList.add("wrong");
+    }
+  }
+
+  function choose(i){
+    if(locked) return;
+    locked=true;
+    const correct = questions[idx].answer;
+    mark(correct, i);
+    if(i===correct) score++;
+    el.score.textContent = `Pontuação: ${score}/${questions.length}`;
+    el.next.disabled=false;
+    el.reveal.disabled=true;
+  }
+
+  function reveal(){
+    if(locked) return;
+    locked=true;
+    mark(questions[idx].answer, null);
+    el.next.disabled=false;
+    el.reveal.disabled=true;
+  }
+
+  function next(){
+    if(idx < questions.length-1){
+      idx++; render();
+    }else{
+      el.bar.style.width="100%";
+      el.meta.textContent="Concluído";
+      el.q.textContent="Fim do Quiz! ✅";
+      el.opts.innerHTML = `<div class="callout">Sua pontuação final foi <b>${score}/${questions.length}</b>. Clique em <b>Recomeçar</b> para treinar de novo.</div>`;
+      el.next.disabled=true;
+      el.reveal.disabled=true;
+    }
+  }
+
+  function restart(){ idx=0; score=0; render(); }
+
+  el.next.addEventListener("click", next);
+  el.reveal.addEventListener("click", reveal);
+  el.restart.addEventListener("click", restart);
+  render();
+}</script>
+  <script>createQuiz('quizS17', [{"q": "O que significa FIFO?", "options": ["Primeiro entra, primeiro sai", "Último entra, primeiro sai", "Entra aleatório, sai aleatório", "Só funciona com números"], "answer": 0}, {"q": "Fila da cantina é exemplo de:", "options": ["Pilha", "Fila", "Árvore", "Matriz"], "answer": 1}, {"q": "O que significa LIFO?", "options": ["Primeiro entra, primeiro sai", "Último entra, primeiro sai", "Sempre entra 2, sai 1", "Sem saída"], "answer": 1}, {"q": "Pilha de pratos é exemplo de:", "options": ["Fila", "Lista", "Pilha", "Vetor"], "answer": 2}, {"q": "Qual estrutura é “coleção em sequência”?", "options": ["Lista", "Big-O", "Recursão", "Busca binária"], "answer": 0}, {"q": "Em fila, quem sai primeiro?", "options": ["O último", "O primeiro", "O do meio", "Ninguém"], "answer": 1}, {"q": "Em pilha, quem sai primeiro?", "options": ["O último", "O primeiro", "O do meio", "Ninguém"], "answer": 0}, {"q": "Fila é muito usada em:", "options": ["Atendimento", "Diagonal", "Ordenação por cores", "Tabela-verdade"], "answer": 0}, {"q": "Pilha pode representar (ideia):", "options": ["Desfazer ações", "Somar diagonal", "Negar proposições", "Gerar senha"], "answer": 0}, {"q": "Qual par está correto?", "options": ["Fila=FIFO; Pilha=LIFO", "Fila=LIFO; Pilha=FIFO", "Lista=FIFO; Matriz=LIFO", "Vetor=FIFO; Árvore=LIFO"], "answer": 0}]);</script>
+</body>
+</html>
