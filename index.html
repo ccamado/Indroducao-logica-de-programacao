@@ -34,29 +34,11 @@ nav{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap}
 @media(min-width:920px){.col6{grid-column:span 6}}
 .section-title{margin:0 0 8px;font-size:13px;letter-spacing:.3px;color:rgba(238,242,255,.85);text-transform:uppercase}
 .box{border:1px dashed rgba(255,255,255,.18);border-radius:16px;padding:14px;background:rgba(0,0,0,.16)}
-pre{margin:0;padding:12px;border-radius:14px;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.14);overflow:auto;font-size:13px;line-height:1.4}
 ul{margin:10px 0 0 18px}li{margin:6px 0;color:rgba(238,242,255,.85)}
 hr.sep{border:0;height:1px;background:rgba(255,255,255,.12);margin:14px 0}
 .callout{border-left:4px solid rgba(124,58,237,.9);padding:10px 12px;border-radius:12px;background:rgba(124,58,237,.10);color:rgba(238,242,255,.9);font-size:13px}
 .illus{width:100%;height:170px;border-radius:16px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.18);display:flex;align-items:center;justify-content:center;overflow:hidden}
 .illus svg{width:100%;height:100%}
-/* Quiz */
-.quiz{border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:14px;background:rgba(8,18,52,.55)}
-.quiz-top{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
-.progress{width:220px;max-width:100%;height:10px;border-radius:999px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.12);overflow:hidden}
-.progress>div{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent2))}
-.q{margin-top:12px;font-size:14px;color:rgba(255,255,255,.96)}
-.opts{display:grid;gap:8px;margin-top:10px}
-.opt{padding:10px 12px;border-radius:14px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.05);cursor:pointer;font-size:13px;text-align:left;color:rgba(255,255,255,.96)}
-.opt:hover{background:rgba(255,255,255,.08)}
-.opt.correct{border-color:rgba(34,197,94,.7);background:rgba(34,197,94,.16)}
-.opt.wrong{border-color:rgba(239,68,68,.7);background:rgba(239,68,68,.16)}
-.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
-.btn{padding:10px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.08);cursor:pointer;font-size:13px;color:rgba(255,255,255,.96)}
-.btn.primary{background:rgba(124,58,237,.22);border-color:rgba(124,58,237,.5)}
-.btn.success{background:rgba(34,197,94,.18);border-color:rgba(34,197,94,.5)}
-.btn:disabled{opacity:.45;cursor:not-allowed}
-.small{font-size:12px;color:rgba(238,242,255,.7)}
 .footer{margin:18px 0 0;color:rgba(238,242,255,.65);font-size:12px;text-align:center}
   </style>
 </head>
@@ -67,7 +49,7 @@ hr.sep{border:0;height:1px;background:rgba(255,255,255,.12);margin:14px 0}
         <div class="logo" aria-hidden="true"></div>
         <div>
           <h1>Introdução à Lógica de Programação — 3ºA</h1>
-          <div class="subtitle">Aulas do 2º bimestre (Semanas 13–16)</div>
+          <div class="subtitle">Aulas do 2º bimestre (Semanas 13–22)</div>
         </div>
       </div>
       <div class="badges">
@@ -79,150 +61,72 @@ hr.sep{border:0;height:1px;background:rgba(255,255,255,.12);margin:14px 0}
 
     <nav aria-label="Menu">
       <a class="navbtn" href="index.html">🏠 Início</a>
-<a class="navbtn" href="semana13.html">📘 07/05 — Funções (revisão)</a>
-<a class="navbtn" href="semana14.html">📗 14/05 — Retorno & Reuso (revisão)</a>
-<a class="navbtn" href="semana15.html">📙 21/05 — Vetor (revisão)</a>
-<a class="navbtn" href="semana16.html">⭐ 28/05 — Matriz (aula)</a>
-<a class="navbtn" href="semana17.html">📘 11/06 — Lista/Fila/Pilha</a>
-<a class="navbtn" href="semana18.html">📗 18/06 — Árvore</a>
-<a class="navbtn" href="semana19.html">📝 25/06 — Avaliação (roteiro)</a>
-<a class="navbtn" href="semana20.html">⚡ 02/07 — Desempenho & Big‑O</a>
-<a class="navbtn" href="semana21.html">🩹 09/07 — RAV (Recursão + Busca)</a>
-<a class="navbtn" href="semana22.html">🔁 16/07 — Ordenação</a>
+      <a class="navbtn" href="semana13.html">📘 07/05 — Funções (revisão)</a>
+      <a class="navbtn" href="semana14.html">📗 14/05 — Retorno & Reuso (revisão)</a>
+      <a class="navbtn" href="semana15.html">📙 21/05 — Vetor (revisão)</a>
+      <a class="navbtn" href="semana16.html">⭐ 28/05 — Matriz (aula)</a>
+      <a class="navbtn" href="semana17.html">📘 11/06 — Lista/Fila/Pilha</a>
+      <a class="navbtn" href="semana18.html">📗 18/06 — Árvore</a>
+      <a class="navbtn" href="semana19.html">📝 25/06 — Avaliação (roteiro)</a>
+      <a class="navbtn" href="semana20.html">⚡ 02/07 — Desempenho & Big‑O</a>
+      <a class="navbtn" href="semana21.html">🩹 09/07 — RAV (Recursão + Busca)</a>
+      <a class="navbtn" href="semana22.html">🔁 16/07 — Ordenação</a>
     </nav>
 
-    
-<div class="grid">
-  <section class="card">
-    <div class="hd">
-      <div>
-        <h2>📌 Bem-vindo(a)!</h2>
-        <p>Abra a aula pelo menu, leia o conteúdo, copie o <b>Resumo para copiar</b> no caderno e faça o <b>Quiz (10 questões)</b>.</p>
-        <div class="callout">Meta: tentar chegar em <b>7/10</b> ou mais no quiz. Se errar, tente de novo.</div>
-      </div>
-      <div style="min-width:260px; max-width:360px;">
-        <div class="illus" aria-hidden="true"><svg viewBox="0 0 900 300" xmlns="http://www.w3.org/2000/svg">
-          <rect width="900" height="300" fill="rgba(0,0,0,.15)"/>
-          <text x="60" y="85" fill="rgba(238,242,255,.9)" font-size="26" font-family="system-ui">Semanas 13–16 publicadas</text>
-          <text x="60" y="120" fill="rgba(238,242,255,.7)" font-size="16" font-family="system-ui">Funções → Retorno → Vetor → Matriz</text>
-          <g transform="translate(60,150)">
-            <rect x="0" y="0" width="170" height="70" rx="14" fill="rgba(124,58,237,.20)" stroke="rgba(255,255,255,.18)"/>
-            <text x="18" y="44" fill="rgba(238,242,255,.9)" font-size="18" font-family="system-ui">Funções</text>
-            <rect x="190" y="0" width="170" height="70" rx="14" fill="rgba(124,58,237,.12)" stroke="rgba(255,255,255,.18)"/>
-            <text x="208" y="44" fill="rgba(238,242,255,.9)" font-size="18" font-family="system-ui">Retorno</text>
-            <rect x="380" y="0" width="170" height="70" rx="14" fill="rgba(124,58,237,.10)" stroke="rgba(255,255,255,.18)"/>
-            <text x="430" y="44" fill="rgba(238,242,255,.9)" font-size="18" font-family="system-ui">Vetor</text>
-            <rect x="570" y="0" width="170" height="70" rx="14" fill="rgba(34,197,94,.14)" stroke="rgba(255,255,255,.18)"/>
-            <text x="615" y="44" fill="rgba(238,242,255,.9)" font-size="18" font-family="system-ui">Matriz</text>
-          </g>
-        </svg></div>
-      </div>
-    </div>
-    <div class="bd">
-      <div class="cols">
-        <div class="col6">
-          <div class="box">
-            <div class="section-title">📅 Aulas publicadas</div>
-            <ul>
-              <li><b>07/05</b> — Funções (revisão)</li>
-              <li><b>14/05</b> — Retorno & Reuso (revisão)</li>
-              <li><b>21/05</b> — Vetor (revisão)</li>
-              <li><b>28/05</b> — Matriz (aula de hoje)</li>
-            </ul>
+    <div class="grid">
+      <section class="card">
+        <div class="hd">
+          <div>
+            <h2>📌 Central de aulas (2º bimestre)</h2>
+            <p>Abra a aula pelo menu. Em cada página: conteúdo + prática no <b>portugol.dev</b> + resumo para copiar + quiz.</p>
+            <div class="callout">Dica: se você estiver vendo links “em breve”, faça <b>CTRL+F5</b> (ou atualização forçada). O GitHub Pages às vezes demora alguns minutos para atualizar.</div>
+          </div>
+          <div style="min-width:260px; max-width:360px;">
+            <div class="illus" aria-hidden="true">
+              <svg viewBox="0 0 900 300" xmlns="http://www.w3.org/2000/svg">
+                <rect width="900" height="300" fill="rgba(0,0,0,.15)"/>
+                <text x="60" y="85" fill="rgba(238,242,255,.9)" font-size="26" font-family="system-ui">Semanas 13–22 disponíveis</text>
+                <text x="60" y="120" fill="rgba(238,242,255,.7)" font-size="16" font-family="system-ui">Funções → Vetor/Matriz → Estruturas → Big‑O → Busca/Ordenação</text>
+              </svg>
+            </div>
           </div>
         </div>
-        <div class="col6">
-          <div class="box">
-            <div class="section-title">📝 Como estudar</div>
-            <ul>
-              <li>Leia o conteúdo.</li>
-              <li>Copie o resumo no caderno.</li>
-              <li>Faça o quiz e tente melhorar a pontuação.</li>
-            </ul>
+        <div class="bd">
+          <div class="cols">
+            <div class="col6">
+              <div class="box">
+                <div class="section-title">📅 Aulas publicadas</div>
+                <ul>
+                  <li><b>07/05</b> — Funções (revisão)</li>
+                  <li><b>14/05</b> — Retorno & Reuso (revisão)</li>
+                  <li><b>21/05</b> — Vetor (revisão)</li>
+                  <li><b>28/05</b> — Matriz</li>
+                  <li><b>11/06</b> — Lista/Fila/Pilha</li>
+                  <li><b>18/06</b> — Árvore</li>
+                  <li><b>25/06</b> — Avaliação (roteiro)</li>
+                  <li><b>02/07</b> — Desempenho & Big‑O</li>
+                  <li><b>09/07</b> — RAV (Recursão + Busca)</li>
+                  <li><b>16/07</b> — Ordenação</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col6">
+              <div class="box">
+                <div class="section-title">📝 Como estudar</div>
+                <ul>
+                  <li>Leia o conteúdo da aula.</li>
+                  <li>Faça a prática guiada no <b>https://portugol.dev/</b>.</li>
+                  <li>Copie o resumo no caderno.</li>
+                  <li>Faça o quiz e tente melhorar a pontuação.</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
-  </section>
-</div>
-
-
-    
 
     <div class="footer">© 2026 — Material de apoio. Simples, didático e direto.</div>
   </div>
-
-  <script>
-function createQuiz(rootId, questions){
-  const root = document.getElementById(rootId);
-  if(!root) return;
-  let idx=0, score=0, locked=false;
-  const el={
-    bar: root.querySelector(".progress > div"),
-    meta: root.querySelector("[data-meta]"),
-    q: root.querySelector("[data-q]"),
-    opts: root.querySelector("[data-opts]"),
-    score: root.querySelector("[data-score]"),
-    next: root.querySelector("[data-next]"),
-    reveal: root.querySelector("[data-reveal]"),
-    restart: root.querySelector("[data-restart]"),
-  };
-  function render(){
-    const item=questions[idx];
-    el.q.textContent=item.q;
-    el.opts.innerHTML="";
-    locked=false;
-    el.next.disabled=true;
-    el.reveal.disabled=false;
-    el.meta.textContent=`Questão ${idx+1} de ${questions.length}`;
-    el.score.textContent=`Pontuação: ${score}/${questions.length}`;
-    el.bar.style.width=Math.round((idx/questions.length)*100)+"%";
-    item.options.forEach((opt,i)=>{
-      const b=document.createElement("button");
-      b.type="button"; b.className="opt";
-      b.textContent=`${String.fromCharCode(65+i)}) ${opt}`;
-      b.addEventListener("click",()=>choose(i,b));
-      el.opts.appendChild(b);
-    });
-  }
-  function choose(i, btn){
-    if(locked) return;
-    locked=true;
-    const correct=questions[idx].answer;
-    const btns=[...el.opts.querySelectorAll(".opt")];
-    btns.forEach((b,bi)=>{ if(bi===correct) b.classList.add("correct"); });
-    if(i===correct){ score++; btn.classList.add("correct"); }
-    else{ btn.classList.add("wrong"); }
-    el.score.textContent=`Pontuação: ${score}/${questions.length}`;
-    el.next.disabled=false;
-    el.reveal.disabled=true;
-  }
-  function reveal(){
-    if(locked) return;
-    locked=true;
-    const correct=questions[idx].answer;
-    const btns=[...el.opts.querySelectorAll(".opt")];
-    btns.forEach((b,bi)=>{ if(bi===correct) b.classList.add("correct"); });
-    el.next.disabled=false;
-    el.reveal.disabled=true;
-  }
-  function next(){
-    if(idx<questions.length-1){ idx++; render(); }
-    else{
-      el.bar.style.width="100%";
-      el.meta.textContent="Concluído";
-      el.q.textContent="Fim do Quiz! ✅";
-      el.opts.innerHTML=`<div class="callout">Sua pontuação final foi <b>${score}/${questions.length}</b>. Clique em <b>Recomeçar</b> para treinar de novo.</div>`;
-      el.next.disabled=true;
-      el.reveal.disabled=true;
-    }
-  }
-  function restart(){ idx=0; score=0; render(); }
-  el.next.addEventListener("click", next);
-  el.reveal.addEventListener("click", reveal);
-  el.restart.addEventListener("click", restart);
-  render();
-}
-  </script>
 </body>
 </html>
