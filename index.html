@@ -58,7 +58,7 @@ hr.sep{border:0;height:1px;background:rgba(255,255,255,.12);margin:14px 0}
 .btn:disabled{opacity:.45;cursor:not-allowed}
 .small{font-size:12px;color:rgba(238,242,255,.7)}
 .footer{margin:18px 0 0;color:rgba(238,242,255,.65);font-size:12px;text-align:center}
-</style>
+  </style>
 </head>
 <body>
   <div class="container">
@@ -82,13 +82,13 @@ hr.sep{border:0;height:1px;background:rgba(255,255,255,.12);margin:14px 0}
 <a class="navbtn" href="semana13.html">📘 07/05 — Funções (revisão)</a>
 <a class="navbtn" href="semana14.html">📗 14/05 — Retorno & Reuso (revisão)</a>
 <a class="navbtn" href="semana15.html">📙 21/05 — Vetor (revisão)</a>
-<a class="navbtn" href="semana16.html">⭐ 28/05 — Matriz (aula de hoje)</a>
-<a class="navbtn" href="#" title="Em breve" aria-disabled="true">🔒 11/06 — Lista/Fila/Pilha (em breve)</a>
-<a class="navbtn" href="#" title="Em breve" aria-disabled="true">🔒 18/06 — Árvore (em breve)</a>
-<a class="navbtn" href="#" title="Em breve" aria-disabled="true">🔒 25/06 — Avaliação (em breve)</a>
-<a class="navbtn" href="#" title="Em breve" aria-disabled="true">🔒 02/07 — Big-O (em breve)</a>
-<a class="navbtn" href="#" title="Em breve" aria-disabled="true">🩹 09/07 — RAV (em breve)</a>
-<a class="navbtn" href="#" title="Em breve" aria-disabled="true">🔒 16/07 — Ordenação (em breve)</a>
+<a class="navbtn" href="semana16.html">⭐ 28/05 — Matriz (aula)</a>
+<a class="navbtn" href="semana17.html">📘 11/06 — Lista/Fila/Pilha</a>
+<a class="navbtn" href="semana18.html">📗 18/06 — Árvore</a>
+<a class="navbtn" href="semana19.html">📝 25/06 — Avaliação (roteiro)</a>
+<a class="navbtn" href="semana20.html">⚡ 02/07 — Desempenho & Big‑O</a>
+<a class="navbtn" href="semana21.html">🩹 09/07 — RAV (Recursão + Busca)</a>
+<a class="navbtn" href="semana22.html">🔁 16/07 — Ordenação</a>
     </nav>
 
     
@@ -185,17 +185,14 @@ function createQuiz(rootId, questions){
       el.opts.appendChild(b);
     });
   }
-  function mark(correctIdx, chosenIdx){
-    const btns=[...el.opts.querySelectorAll(".opt")];
-    btns.forEach((b,i)=>{ if(i===correctIdx) b.classList.add("correct"); });
-    if(chosenIdx!==null && chosenIdx!==correctIdx) btns[chosenIdx].classList.add("wrong");
-  }
-  function choose(i){
+  function choose(i, btn){
     if(locked) return;
     locked=true;
-    const item=questions[idx];
-    mark(item.answer, i);
-    if(i===item.answer) score++;
+    const correct=questions[idx].answer;
+    const btns=[...el.opts.querySelectorAll(".opt")];
+    btns.forEach((b,bi)=>{ if(bi===correct) b.classList.add("correct"); });
+    if(i===correct){ score++; btn.classList.add("correct"); }
+    else{ btn.classList.add("wrong"); }
     el.score.textContent=`Pontuação: ${score}/${questions.length}`;
     el.next.disabled=false;
     el.reveal.disabled=true;
@@ -203,7 +200,9 @@ function createQuiz(rootId, questions){
   function reveal(){
     if(locked) return;
     locked=true;
-    mark(questions[idx].answer, null);
+    const correct=questions[idx].answer;
+    const btns=[...el.opts.querySelectorAll(".opt")];
+    btns.forEach((b,bi)=>{ if(bi===correct) b.classList.add("correct"); });
     el.next.disabled=false;
     el.reveal.disabled=true;
   }
@@ -214,7 +213,8 @@ function createQuiz(rootId, questions){
       el.meta.textContent="Concluído";
       el.q.textContent="Fim do Quiz! ✅";
       el.opts.innerHTML=`<div class="callout">Sua pontuação final foi <b>${score}/${questions.length}</b>. Clique em <b>Recomeçar</b> para treinar de novo.</div>`;
-      el.next.disabled=true; el.reveal.disabled=true;
+      el.next.disabled=true;
+      el.reveal.disabled=true;
     }
   }
   function restart(){ idx=0; score=0; render(); }
@@ -223,7 +223,6 @@ function createQuiz(rootId, questions){
   el.restart.addEventListener("click", restart);
   render();
 }
-</script>
-  <script></script>
+  </script>
 </body>
 </html>
