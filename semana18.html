@@ -136,16 +136,104 @@ hr.sep{border:0;height:1px;background:rgba(255,255,255,.12);margin:14px 0}
           Abra: <b><a href="https://portugol.dev/" target="_blank" rel="noopener noreferrer">https://portugol.dev/</a></b>
         </p>
         <hr class="sep">
-        <ul><li>Abra https://portugol.dev/ e crie um novo projeto.</li><li>Faça um algoritmo que ESCREVA uma “árvore de pastas” usando linhas de texto.</li><li>Exemplo: 'Escola', '  Turma 3ºA', '    Atividades'...</li><li>Escreva no comentário o que é raiz e o que são filhos.</li></ul>
+        <ul>
+          <li>Copie o código abaixo no Portugol Web Studio.</li>
+          <li>Observe que a árvore é representada com textos e espaços.</li>
+          <li>Raiz é o primeiro nível; turmas e alunos são níveis abaixo.</li>
+        </ul>
+        <hr class="sep">
+<pre><code>programa
+{
+  funcao inicio()
+  {
+    // Arvore: Escola - Turmas - Alunos - Notas
+    // Raiz: Escola
+    // Filhos da raiz: Turmas
+
+    escreva("Escola\n")
+    escreva("  Turmas\n")
+
+    escreva("    1oA\n")
+    escreva("      Alunos\n")
+    escreva("        Ana\n")
+    escreva("          Notas: 8.0, 7.5, 9.0\n")
+    escreva("        Bruno\n")
+    escreva("          Notas: 6.5, 7.0, 8.0\n")
+    escreva("        Carlos\n")
+    escreva("          Notas: 9.0, 8.5, 9.5\n")
+
+    escreva("    2oA\n")
+    escreva("      Alunos\n")
+    escreva("        Ana\n")
+    escreva("          Notas: 7.0, 8.0, 7.5\n")
+    escreva("        Bruno\n")
+    escreva("          Notas: 8.5, 8.0, 9.0\n")
+    escreva("        Carlos\n")
+    escreva("          Notas: 6.0, 6.5, 7.0\n")
+
+    escreva("    3oA\n")
+    escreva("      Alunos\n")
+    escreva("        Ana\n")
+    escreva("          Notas: 9.0, 9.5, 10.0\n")
+    escreva("        Bruno\n")
+    escreva("          Notas: 7.5, 8.0, 8.5\n")
+    escreva("        Carlos\n")
+    escreva("          Notas: 8.0, 7.0, 8.5\n")
+  }
+}</code></pre>
       </div>
     
         </div>
         <div class="col6">
           <div class="box">
             <div class="section-title">📝 Resumo para copiar no caderno</div>
-            <div class="callout">1) Árvore = hierarquia (raiz → filhos → netos).<br>2) Usada para organizar coisas (ex.: pastas).<br>3) Nível = “andar” da árvore.<br>4) Uma árvore simples pode ter 3 níveis.</div>
+            <div class="callout">1) Árvore = hierarquia (raiz → filhos → netos).<br>2) Usada para organizar coisas (ex.: pastas, turmas e notas).<br>3) Nível = “andar” da árvore.<br>4) Em Python, podemos guardar uma árvore usando dicionários dentro de dicionários.</div>
             <hr class="sep">
             <div class="small">Copie o resumo inteiro. Ele ajuda a acertar o quiz.</div>
+          </div>
+          <div style="height:12px"></div>
+          <div class="box">
+            <div class="section-title">🐍 Exemplo simples em Python</div>
+            <ul>
+              <li>Este exemplo guarda a árvore como dados.</li>
+              <li>Depois, os laços percorrem a árvore e mostram cada nível.</li>
+            </ul>
+            <hr class="sep">
+<pre><code>escola = {
+    "Turmas": {
+        "1oA": {
+            "Alunos": {
+                "Ana": {"Notas": [8.0, 7.5, 9.0]},
+                "Bruno": {"Notas": [6.5, 7.0, 8.0]},
+                "Carlos": {"Notas": [9.0, 8.5, 9.5]}
+            }
+        },
+        "2oA": {
+            "Alunos": {
+                "Ana": {"Notas": [7.0, 8.0, 7.5]},
+                "Bruno": {"Notas": [8.5, 8.0, 9.0]},
+                "Carlos": {"Notas": [6.0, 6.5, 7.0]}
+            }
+        },
+        "3oA": {
+            "Alunos": {
+                "Ana": {"Notas": [9.0, 9.5, 10.0]},
+                "Bruno": {"Notas": [7.5, 8.0, 8.5]},
+                "Carlos": {"Notas": [8.0, 7.0, 8.5]}
+            }
+        }
+    }
+}
+
+print("Escola")
+
+for turma, dados_turma in escola["Turmas"].items():
+    print(f"  Turma: {turma}")
+
+    for aluno, dados_aluno in dados_turma["Alunos"].items():
+        print(f"    Aluno: {aluno}")
+        print(f"      Notas: {dados_aluno['Notas']}")
+</code></pre>
           </div>
         </div>
       </div>
